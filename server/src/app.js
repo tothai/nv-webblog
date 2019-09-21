@@ -1,5 +1,8 @@
 let express = require('express')
 let bodyParser = require('body-parser')
+const {sequelize} = require('./models')
+
+const config = require('./config/config')
 
 const app = express()
 
@@ -22,10 +25,19 @@ app.post('/hello', function (req, res) {
     res.send('OK you post - ' + req.body.name)
 })
 
+// port definition and listen
+let port = process.env.PORT || config.port//= 8081
+
+sequelize.sync({force: false}).then(() => {
+    app.listen(port, function () {
+        console.log(`Server started on port ` + port)
+    })
+})
 // // get user by Id
 // app.get('/user/:userId', function(req, res) {
 //     res.send('ดูข้อมูลผู้ใช้งาน ' + req.params.userId)
 // });
+
 
 // // get all user
 // app.get('/users', function(req, res) {
@@ -47,9 +59,6 @@ app.post('/hello', function (req, res) {
 //     res.send('ทำการลบผู้ใช้งาน ' + req.params.userId + ' : ' + JSON.stringify(req.body))
 // })
 
-// port definition and listen
-let port = 8081
-app.listen(port, function () {
-    console.log(`Server started on port ` + port)
-})
+
+
 
