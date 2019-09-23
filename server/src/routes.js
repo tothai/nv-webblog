@@ -17,4 +17,6 @@ module.exports = (app) => {
     // get all user
     app.get('/users', UserController.index)
 
+    // app.get('/user/:userId', UserController.display)
+
 }

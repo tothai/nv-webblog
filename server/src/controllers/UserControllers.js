@@ -73,28 +73,28 @@ module.exports = {
         // res.send('ทำการลบผู้ใช้ ' + req.params.userId + ' : ' + JSON.stringifyreq.body);
     },
 
-    // async index (req, res) {
-    //     try {
-    //         const users = await User.findAll()
-    //         res.send(users);
-    //     } catch (err) {
-    //         res.status(500).send({
-    //             error: 'The users information was incorrect'
-    //         })
-    //     }
-    //     // res.send('เรีบกข้อมูลผู้ใช้งานทั้งหมด');
-    // },
-
     // get user by id
     async show (req, res) {
         try {
-            const user = await User.findById(req.params.userId)
+            const user = await User.findById(req.params.userId)//User.findById(req.params.userId)
             res.send(user)
         } catch (err) {
-            res.status(500).send({
-                error: 'The user information was incorrect'
+            req.status(500).send({
+                error: 'SHOW, The user information was incorrect ' + req.params.userId
+                // console.log()
             })
         }
         // res.send('ดูข้อมูลผู้ใช้งาน ' + req.params.userId);
     },
+
+    // async display (req, res) {
+    //     try {
+    //         const user = await User.findById(req.params.userId)
+    //         res.send(user)
+    //     } catch (err) {
+    //         res.status(403).send({
+    //             error: 'Display, ' + req.params.userId
+    //         })
+    //     }
+    // }
 }
