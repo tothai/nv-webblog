@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="this.user">
     <h1>Get User By Id</h1>
     <p>User Id: {{ user.id }} </p>
     <p>ชื่อ-นามสกุล {{ user.name }} - {{ user.lastname }} </p>
@@ -12,7 +12,7 @@ import UsersService from '@/services/UsersService'
 export default {
   data () {
     return {
-      user: 0//null
+      user: null
       // userId: 0
     }
   },
