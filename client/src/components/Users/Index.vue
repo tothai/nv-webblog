@@ -2,6 +2,7 @@
 <template>
   <div>
     <h1>Get All Users</h1>
+    <p><button v-on:click="logout">Logout</button></p>
     <h4>จำนวนผู้ใช้ = {{ users.length }} ท่าน</h4>
     <div v-for="user in users" v-bind:key="user.id">
       <p>id: {{ user.id }} </p>
@@ -12,7 +13,6 @@
           <button v-on:click="navigateTo('/user/edit/'+user.id)">แก้ไขข้อมูลผู้ใช้</button>
           <button v-on:click="navigateTo('/user/create/')">เพิ่มผู้ใช้งาน</button>
           <button v-on:click="deleteUser(user)">ลบผู้ใช้จากระบบ</button>
-          <button v-on:click="logout">Logout</button>
       </p>
       <hr>
     </div>
@@ -66,7 +66,7 @@ export default {
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
-      this.$route.push({
+      this.$router.push({
         name: 'login'
       })
     }

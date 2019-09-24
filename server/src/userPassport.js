@@ -12,7 +12,7 @@ passport.use('user',
         secretOrKey: config.authentication.jwtSecret
     }, async function (jwtPayload, done) {
         try {
-            const user = await user.findOne({
+            const user = await User.findOne({ // User.findOne() is ..const {User} = require('./models')
                 where: {
                     email: jwtPayload.email
                 }

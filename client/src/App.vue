@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <back-header/>
+    <router-view/> <!-- display body contents-->
     <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <!-- <router-view/> -->
   </div>
 </template>
 
