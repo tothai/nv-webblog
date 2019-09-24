@@ -12,6 +12,7 @@
           <button v-on:click="navigateTo('/user/edit/'+user.id)">แก้ไขข้อมูลผู้ใช้</button>
           <button v-on:click="navigateTo('/user/create/')">เพิ่มผู้ใช้งาน</button>
           <button v-on:click="deleteUser(user)">ลบผู้ใช้จากระบบ</button>
+          <button v-on:click="logout">Logout</button>
       </p>
       <hr>
     </div>
@@ -61,6 +62,13 @@ export default {
     },
     async refreshData  () {
       this.users = (await UsersService.index()).data
+    },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$route.push({
+        name: 'login'
+      })
     }
   }
   // created () {

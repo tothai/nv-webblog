@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
         password: DataTypes.STRING,
         name: DataTypes.STRING,
         lastname: DataTypes.STRING,
-        status: DataTypes.STRING
-        // type: DataTypes.STRING
+        status: DataTypes.STRING,
+        type: DataTypes.STRING
     })
 
     User.prototype.comparePassword = function (password) {

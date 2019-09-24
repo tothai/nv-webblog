@@ -1,8 +1,13 @@
 const UserController = require('./controllers/UserControllers')
+const UserAuthenController = require('./controllers/UserAuthenController')
+const isAuthenController = require('./authen/isAuthenController')
 
 module.exports = (app) => {
     /* RESFUL Api for users management */ 
     // create user
+
+    app.post('/login', UserAuthenController.login)
+
     app.post('/user', UserController.create)
 
     // edit user, suspend, active
@@ -15,7 +20,7 @@ module.exports = (app) => {
     app.get('/user/:userId', UserController.show)
 
     // get all user
-    app.get('/users', UserController.index)
+    app.get('/users', isAuthenController, UserController.index)
 
     // app.get('/user/:userId', UserController.display)
 
