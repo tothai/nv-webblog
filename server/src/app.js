@@ -1,21 +1,19 @@
 let express = require('express')
 let bodyParser = require('body-parser')
 let cors = require('cors')
+
 const {sequelize} = require('./models')
-
 const config = require('./config/config')
-
-
 const app = express()
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
+// app.use('/assets', express.static('public'))
 
 require('./userPassport')
-
 require('./routes')(app)
-
 
 
 app.get('/status', function (req, res) {
@@ -31,6 +29,9 @@ app.post('/hello', function (req, res) {
     res.send('OK you post - ' + req.body.name)
 })
 
+app.use('/assets', express.static('public'))
+// app.use('/assets', express.static('src/public'))
+// let port = 8081
 // port definition and listen
 let port = process.env.PORT || config.port//= 8081
 

@@ -20,6 +20,8 @@ import BlogCreate from '@/components/Blogs/CreateBlog'
 import BlogEdit from '@/components/Blogs/EditBlog'
 import BlogShow from '@/components/Blogs/ShowBlog'
 
+// upload testing
+import Upload from '@/components/Utils/Upload'
 
 Vue.use(Router)
 
@@ -77,6 +79,12 @@ export default new Router({
       path:'/comments',
       name:'comments',
       component: CommentIndex
+    },
+    // upload testing
+    {
+      path:'/upload',
+      name:'upload',
+      component: Upload
     },
   ]
 })
